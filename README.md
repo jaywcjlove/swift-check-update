@@ -1,6 +1,8 @@
 CheckUpdate
 ===
 
+[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor)
+
 Code to check if there is a new version on the App Store, to determine whether an update prompt needs to be shown.
 
 > [!TIP]
