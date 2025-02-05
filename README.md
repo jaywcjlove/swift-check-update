@@ -4,6 +4,7 @@ CheckUpdate
 Code to check if there is a new version on the App Store.
 
 > [!TIP]
+> 
 > After the app is released, it will not update immediately on the App Store; it needs to wait 24 hours before it works properly.
 
 ✦ My macOS/iOS application ✦
