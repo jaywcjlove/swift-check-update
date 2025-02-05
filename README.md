@@ -1,7 +1,7 @@
 CheckUpdate
 ===
 
-Code to check if there is a new version on the App Store.
+Code to check if there is a new version on the App Store, to determine whether an update prompt needs to be shown.
 
 > [!TIP]
 > 
@@ -37,15 +37,16 @@ Code to check if there is a new version on the App Store.
 import CheckUpdate
 
 CheckUpdate.checkVersion { isUpdateNeeded, appStoreVersion, currentVersion in
-
+    // Here it checks whether an update prompt needs to be shown.
 }
 
 CheckUpdate.checkVersion(bundleId: "com.wangchujiang.daybar") {
     isUpdateNeeded,
     appStoreVersion,
     currentVersion in
+
     // appStoreVersion -> "1.0"
-    // currentVersion -> 2.0"
+    // currentVersion -> "2.0"
     // isUpdateNeeded -> false
 }
 
@@ -53,8 +54,9 @@ CheckUpdate.checkVersion(bundleId: "com.wangchujiang.daybar") {
     isUpdateNeeded,
     appStoreVersion,
     currentVersion in
+
     // appStoreVersion -> "2.0"
-    // currentVersion -> 1.0"
+    // currentVersion -> "1.0"
     // isUpdateNeeded -> true
 }
 ```
