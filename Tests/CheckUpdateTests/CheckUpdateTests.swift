@@ -46,6 +46,7 @@ class CheckUpdateTests: XCTestCase {
         XCTAssertFalse(CheckUpdate.compareVersion(currentVersion: "1.0", appStoreVersion: "1.0"))
         XCTAssertFalse(CheckUpdate.compareVersion(currentVersion: "2.0", appStoreVersion: "1.0"))
         XCTAssertFalse(CheckUpdate.compareVersion(currentVersion: "2", appStoreVersion: "1.0"))
+        XCTAssertFalse(CheckUpdate.compareVersion(currentVersion: "2", appStoreVersion: "2"))
         XCTAssertTrue(CheckUpdate.compareVersion(currentVersion: "2", appStoreVersion: "3.0"))
         XCTAssertFalse(CheckUpdate.compareVersion(currentVersion: "16.1.23.pre", appStoreVersion: "3.0"))
         
