@@ -1,0 +1,34 @@
+name: Create Release
+on:
+  push:
+    tags: 
+      - v*
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: get tag version
+        id: tag_version
+        uses: jaywcjlove/changelog-generator@main
+
+      - name: Generate changelog
+        id: changelog
+        uses: jaywcjlove/changelog-generator@main
+        with:
+          filter-author: (小弟调调™)
+          filter: (^[\s]+?[R|r]elease)|(^[R|r]elease)
+          
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ steps.changelog.outputs.tag }}
+          tag: ${{ steps.changelog.outputs.tag }}
+          body: |
+            [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor)
+
+            Comparing Changes: ${{ steps.changelog.outputs.compareurl }}
+
+            ${{ steps.changelog.outputs.changelog }}
