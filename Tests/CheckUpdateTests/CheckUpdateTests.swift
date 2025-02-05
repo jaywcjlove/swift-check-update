@@ -26,7 +26,10 @@ class CheckUpdateTests: XCTestCase {
     
     func testDayBarCheckVersion() async throws {
         let expectation = XCTestExpectation(description: "Check version completion handler called")
-        CheckUpdate.checkVersion(bundleId: "com.wangchujiang.daybar") { isUpdateNeeded, appStoreVersion, currentVersion in
+        CheckUpdate.checkVersion(bundleId: "com.wangchujiang.daybar") {
+            isUpdateNeeded,
+            appStoreVersion,
+            currentVersion in
             // Check if the completion handler is called
             XCTAssertEqual(appStoreVersion, "1.0")
             XCTAssertEqual(currentVersion, "16.0")

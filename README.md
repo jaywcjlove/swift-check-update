@@ -40,13 +40,19 @@ CheckUpdate.checkVersion { isUpdateNeeded, appStoreVersion, currentVersion in
 
 }
 
-CheckUpdate.checkVersion(bundleId: "com.wangchujiang.daybar") { isUpdateNeeded, appStoreVersion, currentVersion in
+CheckUpdate.checkVersion(bundleId: "com.wangchujiang.daybar") {
+    isUpdateNeeded,
+    appStoreVersion,
+    currentVersion in
     // appStoreVersion -> "1.0"
     // currentVersion -> 2.0"
     // isUpdateNeeded -> false
 }
 
-CheckUpdate.checkVersion(bundleId: "com.wangchujiang.daybar") { isUpdateNeeded, appStoreVersion, currentVersion in
+CheckUpdate.checkVersion(bundleId: "com.wangchujiang.daybar") {
+    isUpdateNeeded,
+    appStoreVersion,
+    currentVersion in
     // appStoreVersion -> "2.0"
     // currentVersion -> 1.0"
     // isUpdateNeeded -> true
