@@ -8,15 +8,10 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Generate changelog
-        id: changelog
-        uses: jaywcjlove/changelog-generator@main
-        with:
-          filter-author: (小弟调调™)
-          filter: (^[\s]+?[R|r]elease)|(^[R|r]elease)
-          
       - name: Create Tag
         id: create_tag
         uses: jaywcjlove/create-tag-action@main
