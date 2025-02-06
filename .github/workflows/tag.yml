@@ -1,17 +1,15 @@
 name: Create Release
 on:
   push:
-    tags: 
-      - v*
+    # tags: 
+    #   - v*
+    branches:
+      - main
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: get tag version
-        id: tag_version
-        uses: jaywcjlove/changelog-generator@main
-
       - name: Generate changelog
         id: changelog
         uses: jaywcjlove/changelog-generator@main
