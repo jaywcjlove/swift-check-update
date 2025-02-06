@@ -7,5 +7,6 @@ jobs:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
+      - run: sudo xcode-select -p
       - run: sudo xcode-select -switch /Applications/Xcode_16.app
       - run: swift test
