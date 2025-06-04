@@ -3,7 +3,39 @@
 
 import Foundation
 
+/// Code to check if there is a new version on the App Store, to determine whether an update prompt needs to be shown.
 public enum CheckUpdate {
+    /**
+    Check the released app version in the App Store and return the current version, store version, and whether an update is needed.
+     
+    Example:
+     
+    ```swift
+    CheckUpdate.checkVersion { isUpdateNeeded, appStoreVersion, currentVersion in
+        // Here it checks whether an update prompt needs to be shown.
+    }
+
+    CheckUpdate.checkVersion(bundleId: "com.wangchujiang.daybar") {
+        isUpdateNeeded,
+        appStoreVersion,
+        currentVersion in
+
+        // appStoreVersion -> "1.0"
+        // currentVersion -> "2.0"
+        // isUpdateNeeded -> false
+    }
+
+    CheckUpdate.checkVersion(bundleId: "com.wangchujiang.daybar") {
+        isUpdateNeeded,
+        appStoreVersion,
+        currentVersion in
+
+        // appStoreVersion -> "2.0"
+        // currentVersion -> "1.0"
+        // isUpdateNeeded -> true
+    }
+    ```
+     */
     public static func checkVersion(bundleId: String? = nil, completion: @escaping @Sendable (Bool, String?, String?) -> Void) {
         // Get the current application's Bundle Identifier
         guard let bundleId = bundleId ?? Bundle.main.bundleIdentifier else {
@@ -65,7 +97,18 @@ public enum CheckUpdate {
     }
     
     // MARK: - Version number comparison
-    // Version number comparison
+    /**
+    Version number comparison
+     ```swift
+     CheckUpdate.compareVersion(currentVersion: "1.0.0", appStoreVersion: "1.0.1")
+     CheckUpdate.compareVersion(currentVersion: "1.0.1", appStoreVersion: "1.0.0")
+     CheckUpdate.compareVersion(currentVersion: "1.0.0", appStoreVersion: "1.0.0")
+     CheckUpdate.compareVersion(currentVersion: "1.0.0", appStoreVersion: "1.0")
+     CheckUpdate.compareVersion(currentVersion: "1.0", appStoreVersion: "1.0")
+     CheckUpdate.compareVersion(currentVersion: "2.0", appStoreVersion: "1.0")
+     CheckUpdate.compareVersion(currentVersion: "2", appStoreVersion: "1.0")
+     ```
+     */
     internal static func compareVersion(currentVersion: String, appStoreVersion: String) -> Bool {
         guard isValidVersion(currentVersion), isValidVersion(appStoreVersion) else {
             return false
